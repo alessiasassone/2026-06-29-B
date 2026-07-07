@@ -10,10 +10,38 @@ class Controller:
 
 
     def handleCreaGrafo(self, e):
-        pass
+        self._model.buildGraph()
+        nNodi, nArchi = self._model.getGraphDetails()
+
+        self._view._txt_result.controls.clear()
+        self._view._txt_result.controls.append(
+            ft.Text("Grafo correttamente creato.")
+        )
+        self._view._txt_result.controls.append(
+            ft.Text(f"Numero nodi: {nNodi}")
+        )
+        self._view._txt_result.controls.append(
+            ft.Text(f"Numero di archi: {nArchi}")
+        )
+
+        self._view.update_page()
 
     def handleStampaInfo(self,e):
-        pass
+        self._view._txt_result.controls.clear()
+
+        numero, largest, dettagli = self._model.getConnessaInfo()
+        self._view._txt_result.controls.append(
+            ft.Text(f"Numero di componenti connesse: {numero}")
+        )
+        self._view._txt_result.controls.append(
+            ft.Text(f"Dimensione della componente connessa più grande: {len(largest)} album")
+        )
+        self._view._txt_result.controls.append(
+            ft.Text("Dettagli degli album appartenenti alla componente connessa più grande:")
+        )
+        for titolo, num_brani in dettagli:
+            self._view._txt_result.controls.append(ft.Text(f"{titolo}: {num_brani} brani"))
+        self._view.update_page()
 
     def handleSelezione(self,e):
         pass

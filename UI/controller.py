@@ -43,5 +43,16 @@ class Controller:
             self._view._txt_result.controls.append(ft.Text(f"{titolo}: {num_brani} brani"))
         self._view.update_page()
 
+    def fillDDsAlbum(self):
+        albums = self._model.getAllNodes()
+
+        albumsOptions = list(map(lambda x: ft.dropdown.Option(x), albums))
+        self._view._ddAlbum.options = albumsOptions
+
+        self._view.update_page()
+
+    def _choiceAlbum(self, e):
+        self._albumValue = e.control.data
+
     def handleSelezione(self,e):
         pass

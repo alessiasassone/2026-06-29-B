@@ -9,6 +9,9 @@ class Model:
         self._idMap = {}
         self._nodes = []
 
+    def getAllNodes(self):
+        return DAO.getAllNodes()
+
     def buildGraph(self):
         self._graph.clear()
 

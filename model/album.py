@@ -15,4 +15,4 @@ class Album:
         return self.AlbumId == other.AlbumId
 
     def __str__(self):
-        return f"{self.Title}: {self.NumBrani} brani"
+        return f"{self.Title}"

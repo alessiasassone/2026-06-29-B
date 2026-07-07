@@ -13,11 +13,11 @@ class DAO():
 
         cursor = conn.cursor(dictionary=True)
         query = """
-                SELECT a.* , SUM(t.AlbumId) AS NumBrani
+                SELECT a.* , COUNT(t.AlbumId) AS NumBrani
                 FROM Album a , Track t  
                 WHERE t.AlbumId  = a.AlbumId 
                 GROUP BY a.AlbumId 
-                ORDER BY NumBrani ASC
+                ORDER BY a.Title ASC
                 """
 
         cursor.execute(query)
